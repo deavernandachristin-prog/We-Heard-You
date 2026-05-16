@@ -369,20 +369,21 @@ createClient(
   supabaseKey
 )
 
-/* cek session login */
+/* cek auth login */
 
-const {
-data
+supabase.auth.onAuthStateChange((event, session) => {
+
+if(session){
+
+console.log('User logged in')
+
+}else{
+
+window.location.href = 'login.html'
+
 }
-=
-await supabase.auth.getSession()
 
-if(!data.session){
-
-window.location.href =
-'login.html'
-
-}
+})
 
 /* tampilkan username */
 
