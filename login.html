@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>We Heard You — Enter Safe Space</title>
+  <style>
+    *{box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+    body{
+      margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+      background:radial-gradient(circle at top left,#31104b 0%,#130821 45%,#0b0416 100%);
+      color:#f2eaf8;overflow:hidden;position:relative;
+    }
+    .star{position:absolute;width:4px;height:4px;background:#fff;border-radius:50%;opacity:.8;box-shadow:0 0 12px #fff}
+    .card{
+      width:100%;max-width:480px;padding:34px;border-radius:28px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(18px);
+      box-shadow:0 20px 60px rgba(149,46,224,.25);
+      text-align:center;position:relative;z-index:2;
+    }
+    h1{margin:0 0 10px;font-size:42px;color:#fff}
+    .subtitle{color:#decfea;line-height:1.7;margin-bottom:26px}
+    label{text-align:left;display:block;margin:18px 0 8px;color:#f2eaf8;font-weight:600}
+    input{
+      width:100%;padding:15px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.08);color:#fff;font-size:15px;outline:none;
+    }
+    input::placeholder{color:#cbb6da}
+    .hint{text-align:left;font-size:12px;color:#cdb9dc;margin-top:7px}
+    button{
+      width:100%;margin-top:28px;padding:16px;border:none;border-radius:16px;
+      background:linear-gradient(90deg,#7a2cf2,#c92bd8);
+      color:#fff;font-size:16px;font-weight:700;cursor:pointer;
+      box-shadow:0 12px 30px rgba(201,43,216,.35);
+    }
+    .note{
+      margin-top:18px;padding:14px;border-radius:16px;
+      background:rgba(255,255,255,.05);color:#decfea;font-size:13px;line-height:1.6;
+    }
+    .brand{font-size:14px;color:#decfea;margin-bottom:12px;letter-spacing:1px}
+  </style>
+</head>
+<body>
+  <div class="star" style="top:8%;left:18%"></div>
+  <div class="star" style="top:18%;right:16%"></div>
+  <div class="star" style="bottom:22%;left:12%"></div>
+  <div class="star" style="bottom:14%;right:20%"></div>
+
+  <div class="card">
+    <div class="brand">WE HEARD YOU</div>
+    <h1>Enter Safe Space</h1>
+    <p class="subtitle">A comforting digital space where feelings are welcomed, voices are valued, and every story deserves to be heard.</p>
+
+    <form id="loginForm">
+      <label>Anonymous Username</label>
+      <input type="text" id="username" placeholder="ex: MidnightSoul / SilentWave" required />
+      <div class="hint">Use a nickname. Your real name is not required.</div>
+
+      <label>Confirmation Email</label>
+      <input type="email" id="email" placeholder="ex: hiddenvoice@mail.com" required />
+      <div class="hint">Use an email that does not reveal your personal identity.</div>
+
+      <button type="submit">Continue Anonymously</button>
+    </form>
+
+    <div class="note">
+      Your email is used only for payment confirmation and booking session updates. Your identity remains private.
+    </div>
+  </div>
+
+ <script type="module">
+
+import { createClient }
+from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+const supabaseUrl =
+'https://dhsqzpnemvwmwefqrbkm.supabase.co'
+
+const supabaseKey =
+'sb_publishable_WcqyP66rmzlNK3rQJTv49w_yWtOUOmq'
+
+const supabase =
+createClient(
+  supabaseUrl,
+  supabaseKey
+)
+
+document
+.getElementById('loginForm')
+.addEventListener(
+'submit',
+async function(e){
+
+e.preventDefault()
+
+const username =
+document
+.getElementById('username')
+.value
+.trim()
+
+const email =
+document
+.getElementById('email')
+.value
+.trim()
+
+/* simpan session lokal */
+
+localStorage.setItem(
+'why_username',
+username
+)
+
+localStorage.setItem(
+'why_email',
+email
+)
+
+/* kirim magic link */
+
+const {
+error
+}
+=
+await supabase.auth.signInWithOtp({
+
+email:email,
+
+options:{
+
+emailRedirectTo:
+'https://weheardyouhere.netlify.app/chatroom.html'
+
+}
+
+})
+
+if(error){
+
+console.log(error)
+
+alert(error.message)
+
+return
+
+}
+
+alert(
+'Check your email to continue 💜'
+)
+
+})
+
+</script>
