@@ -388,20 +388,25 @@ window.location.href = 'login.html'
 /* tampilkan username */
 
 const username =
-localStorage.getItem(
+sessionStorage.getItem(
 'why_username'
 )
+    
+if(!username){
 
-if(username){
+window.location.href = 'login.html'
+
+}
 
 document.querySelector(
 '.identity span'
 ).innerText =
-username
-
-}
+username || 'Anonymous Soul'
+    
+})
 
 </script>
+
 <script>
 const timerEl = document.getElementById("timer");
 const input = document.getElementById("messageInput");
