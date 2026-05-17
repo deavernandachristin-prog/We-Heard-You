@@ -403,11 +403,16 @@ document.querySelector(
 ).innerText =
 username || 'Anonymous Soul'
     
-})
 
 </script>
 
 <script>
+
+const username =
+sessionStorage.getItem(
+'why_username'
+) || 'Anonymous Soul'
+    
 const timerEl = document.getElementById("timer");
 const input = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendBtn");
@@ -519,17 +524,84 @@ const countdown = setInterval(()=>{
     timeLeft--;
 },1000);
 
-function sendMessage(){
-    if(input.value.trim()==="") return;
+async function sendMessage(){
 
-    const msg=document.createElement("div");
-    msg.className="message";
-    msg.innerHTML=`<div class="sent">${input.value}</div>`;
+    const text = input.value.trim()
 
-    chatArea.appendChild(msg);
-    input.value="";
-    chatArea.scrollTop=chatArea.scrollHeight;
+    if(text === "") return
+
+    const username =
+    sessionStorage.getItem(
+    'why_username'
+    ) || 'Anonymous Soul'
+
+    /* simpan ke supabase */
+
+    const { error } =
+    await supabase
+    .from('messages')
+    .insert([
+
+    {
+        username: username,
+        message: text
+    }
+
+    ])
+
+    if(error){
+
+        console.log(error)
+        alert('Failed to send message')
+
+        return
+    }
+
+    input.value = ""
+
 }
+
+/* realtime messages */
+
+supabase
+.channel('chat-room')
+
+.on(
+'postgres_changes',
+{
+event:'INSERT',
+schema:'public',
+table:'messages'
+},
+(payload)=>{
+
+const data = payload.new
+
+const msg =
+document.createElement('div')
+
+msg.className = 'message'
+
+msg.innerHTML = `
+<div class="${
+data.username === username
+? 'sent'
+: 'received'
+}">
+${data.message}
+</div>
+`
+
+chatArea.appendChild(msg)
+
+chatArea.scrollTop =
+chatArea.scrollHeight
+
+}
+
+)
+
+.subscribe()
 </script>
 
 </body>
