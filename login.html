@@ -60,7 +60,7 @@
 
       <label>Confirmation Email</label>
       <input type="email" id="email" placeholder="ex: hiddenvoice@mail.com" required />
-      <div class="hint">Use an email that does not reveal your personal identity.</div>
+      <div class="hint">Gunakan email yang aktif. Link untuk masuk roomchat akan dikirmkan melalui email.</div>
 
       <button type="submit">Continue Anonymously</button>
     </form>
@@ -87,13 +87,20 @@ createClient(
   supabaseKey
 )
 
-document
-.getElementById('loginForm')
-.addEventListener(
+const form =
+document.getElementById('loginForm')
+
+const button =
+form.querySelector('button')
+
+form.addEventListener(
 'submit',
 async function(e){
 
 e.preventDefault()
+
+button.disabled = true
+button.innerText = 'Sending link...'
 
 const username =
 document
@@ -106,15 +113,26 @@ document
 .getElementById('email')
 .value
 .trim()
+  
+if(username.length < 3){
+
+alert('Username minimal 3 karakter')
+
+button.disabled = false
+button.innerText = 'Continue Anonymously'
+
+return
+
+}
 
 /* simpan session lokal */
 
-localStorage.setItem(
+sessionStorage.setItem(
 'why_username',
 username
 )
 
-localStorage.setItem(
+sessionStorage.setItem(
 'why_email',
 email
 )
@@ -143,7 +161,8 @@ if(error){
 console.log(error)
 
 alert(error.message)
-
+button.disabled = false
+button.innerText = 'Continue Anonymously'
 return
 
 }
@@ -152,6 +171,17 @@ alert(
 'Check your email to continue 💜'
 )
 
-})
+button.innerText = 'Link Sent 💜'
 
+setTimeout(() => {
+
+button.disabled = false
+button.innerText = 'Continue Anonymously'
+
+}, 60000)
+
+})
+   
 </script>
+</body>
+</html>
