@@ -390,8 +390,8 @@ window.location.href = 'login.html'
 const username =
 sessionStorage.getItem(
 'why_username'
-)
-    
+) || 'Anonymous Soul'
+
 if(!username){
 
 window.location.href = 'login.html'
@@ -401,17 +401,8 @@ window.location.href = 'login.html'
 document.querySelector(
 '.identity span'
 ).innerText =
-username || 'Anonymous Soul'
-    
+username
 
-</script>
-
-<script>
-
-const username =
-sessionStorage.getItem(
-'why_username'
-) || 'Anonymous Soul'
     
 const timerEl = document.getElementById("timer");
 const input = document.getElementById("messageInput");
@@ -524,7 +515,7 @@ const countdown = setInterval(()=>{
     timeLeft--;
 },1000);
 
-async function sendMessage(){
+window.sendMessage = async function(){
 
     const text = input.value.trim()
 
@@ -534,8 +525,6 @@ async function sendMessage(){
     sessionStorage.getItem(
     'why_username'
     ) || 'Anonymous Soul'
-
-    /* simpan ke supabase */
 
     const { error } =
     await supabase
