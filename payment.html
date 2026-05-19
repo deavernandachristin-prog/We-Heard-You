@@ -44,9 +44,9 @@ const interval=setInterval(()=>{
   timer.textContent=`${m}:${s}`;
   fill.style.width=(timeLeft/60*100)+'%';
 
-  if(timeLeft===30){
+  if(timeLeft===50){
     status.innerHTML='Payment verified successfully ✨<br>Redirecting you to Anonymous Login...';
-    setTimeout(()=>{ window.location.href='login.html'; },1500);
+    setTimeout(()=>{ window.location.href='chatroom.html'; },1500);
     clearInterval(interval);
   }
 
