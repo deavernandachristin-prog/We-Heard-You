@@ -60,7 +60,20 @@
 
       <label>Confirmation Email</label>
       <input type="email" id="email" placeholder="ex: hiddenvoice@mail.com" required />
-      <div class="hint">Gunakan email yang aktif. Link untuk masuk roomchat akan dikirmkan melalui email.</div>
+      <div class="hint">Gunakan email yang aktif.</div>
+
+      <label>Password</label>
+
+<input
+type="password"
+id="password"
+placeholder="Minimal 6 karakter"
+required
+/>
+
+<div class="hint">
+Gunakan password yang mudah diingat.
+</div>
 
       <button type="submit">Continue Anonymously</button>
     </form>
@@ -100,7 +113,7 @@ async function(e){
 e.preventDefault()
 
 button.disabled = true
-button.innerText = 'Sending link...'
+button.innerText = 'Creating account...'
 
 const username =
 document
@@ -113,10 +126,27 @@ document
 .getElementById('email')
 .value
 .trim()
+
+const password =
+document
+.getElementById('password')
+.value
+.trim()
   
 if(username.length < 3){
 
 alert('Username minimal 3 karakter')
+
+button.disabled = false
+button.innerText = 'Continue Anonymously'
+
+return
+
+}
+
+if(password.length < 6){
+
+alert('Password minimal 6 karakter')
 
 button.disabled = false
 button.innerText = 'Continue Anonymously'
@@ -137,22 +167,16 @@ sessionStorage.setItem(
 email
 )
 
-/* kirim magic link */
 
 const {
+data,
 error
 }
 =
-await supabase.auth.signInWithOtp({
+await supabase.auth.signUp({
 
-email:email,
-
-options:{
-
-emailRedirectTo:
-'https://we-heard-you-gvgc.vercel.app/chatroom.html'
-
-}
+email: email,
+password: password
 
 })
 
@@ -167,18 +191,10 @@ return
 
 }
 
-alert(
-'Check your email to continue 💜'
-)
+window.location.href =
+'/payment.html'
 
-button.innerText = 'Link Sent 💜'
-
-setTimeout(() => {
-
-button.disabled = false
-button.innerText = 'Continue Anonymously'
-
-}, 60000)
+  
 
 })
    
