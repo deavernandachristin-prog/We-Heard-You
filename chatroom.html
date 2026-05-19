@@ -403,11 +403,62 @@ document.querySelector(
 ).innerText =
 username
 
-    
 const timerEl = document.getElementById("timer");
 const input = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendBtn");
 const chatArea = document.getElementById("chatArea");
+
+/* load old messages */
+
+async function loadMessages(){
+
+const {
+data,
+error
+}
+=
+await supabase
+.from('messages')
+.select('*')
+.order('id',{ascending:true})
+
+if(error){
+
+console.log(error)
+return
+
+}
+
+data.forEach((msgData)=>{
+
+const msg =
+document.createElement('div')
+
+msg.className = 'message'
+
+msg.innerHTML = `
+<div class="${
+msgData.username === username
+? 'sent'
+: 'received'
+}">
+<strong>${msgData.username}</strong><br>
+${msgData.message}
+</div>
+`
+
+chatArea.appendChild(msg)
+
+})
+
+chatArea.scrollTop =
+chatArea.scrollHeight
+
+}
+
+/* jalankan load */
+
+loadMessages()
 
 let timeLeft = 30 * 60;
 let extendOfferShown = false;
@@ -531,10 +582,11 @@ window.sendMessage = async function(){
     .from('messages')
     .insert([
 
-    {
-        username: username,
-        message: text
-    }
+   {
+    username: username,
+    email: sessionStorage.getItem('why_email'),
+    message: text
+   }
 
     ])
 
@@ -577,6 +629,7 @@ data.username === username
 ? 'sent'
 : 'received'
 }">
+<strong>${data.username}</strong><br>
 ${data.message}
 </div>
 `
