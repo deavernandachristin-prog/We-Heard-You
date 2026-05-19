@@ -566,7 +566,7 @@ const countdown = setInterval(()=>{
     timeLeft--;
 },1000);
 
-window.sendMessage = async function(){
+async function sendMessage(){
 
     const text = input.value.trim()
 
@@ -643,7 +643,16 @@ chatArea.scrollHeight
 
 )
 
-.subscribe()
+.subscribe((status) => {
+
+console.log('Realtime status:', status)
+
+})
+
+window.chooseExtend = chooseExtend
+window.choosePsychologist = choosePsychologist
+window.sendMessage = sendMessage
+    
 </script>
 
 </body>
