@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Database - We-Heard-You</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #FDFBF7; font-family: 'Inter', sans-serif; }
+        .bg-coffee { background-color: #6F4E37; }
+        .text-coffee { color: #6F4E37; }
+        .border-latte { border-color: #E6D5B8; }
+        .status-active { background-color: #DEF7EC; color: #03543F; }
+        .status-banned { background-color: #FDE8E8; color: #9B1C1C; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <nav class="bg-white border-b border-latte px-8 py-4 flex justify-between items-center sticky top-0 z-10 shadow-sm">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="flex items-center gap-2 text-gray-500 hover:text-coffee transition font-semibold text-sm">
+                <i class="fas fa-chevron-left text-xs"></i>
+                Kembali ke Dashboard
+            </a>
+            <div class="h-6 w-[1px] bg-gray-200"></div>
+            <h1 class="font-bold text-lg text-[#3C2A21]">Database User (Encrypted)</h1>
+        </div>
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-medium text-gray-400">Terakhir Sinkron: 2 menit yang lalu</span>
+            <button class="p-2 hover:bg-gray-100 rounded-full text-gray-400"><i class="fas fa-sync-alt"></i></button>
+        </div>
+    </nav>
+
+    <main class="p-8 max-w-7xl mx-auto w-full flex-1">
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white p-5 rounded-2xl border border-latte shadow-sm">
+                <p class="text-xs font-bold text-gray-400 uppercase">Total Unique Visitors</p>
+                <h3 class="text-2xl font-black">1,284</h3>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-latte shadow-sm">
+                <p class="text-xs font-bold text-gray-400 uppercase">Repeat Clients</p>
+                <h3 class="text-2xl font-black text-coffee">42%</h3>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-latte shadow-sm">
+                <p class="text-xs font-bold text-gray-400 uppercase">Banned Account</p>
+                <h3 class="text-2xl font-black text-red-600">3</h3>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-latte shadow-sm">
+                <p class="text-xs font-bold text-gray-400 uppercase">Avg. Session / User</p>
+                <h3 class="text-2xl font-black">2.4x</h3>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-4 mb-6 justify-between items-center">
+            <div class="relative w-full md:w-96">
+                <i class="fas fa-search absolute left-4 top-3.5 text-gray-300"></i>
+                <input type="text" placeholder="Cari berdasarkan UID atau Token..." class="w-full pl-12 pr-4 py-3 bg-white border border-latte rounded-2xl focus:ring-2 focus:ring-coffee/20 outline-none shadow-sm">
+            </div>
+            <div class="flex gap-2 w-full md:w-auto">
+                <button class="flex-1 md:flex-none bg-white border border-latte px-4 py-3 rounded-2xl text-sm font-bold hover:bg-gray-50 transition">
+                    <i class="fas fa-filter mr-2"></i> Filter Status
+                </button>
+                <button class="flex-1 md:flex-none bg-[#3C2A21] text-white px-6 py-3 rounded-2xl text-sm font-bold shadow-lg hover:bg-black transition">
+                    Tambah Blacklist
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-latte overflow-hidden shadow-sm">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-[#F8F3E9] text-coffee text-[11px] uppercase tracking-[0.1em] font-black">
+                        <th class="p-5">User UID (Anonymous)</th>
+                        <th class="p-5">First Joined</th>
+                        <th class="p-5">Total Sesi</th>
+                        <th class="p-5">Total Spend</th>
+                        <th class="p-5">Last Activity</th>
+                        <th class="p-5">Status</th>
+                        <th class="p-5 text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-50">
+                    <tr class="hover:bg-cream/20 transition">
+                        <td class="p-5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-coffee/10 rounded-full flex items-center justify-center text-coffee text-[10px] font-bold">U1</div>
+                                <span class="font-mono text-sm font-bold tracking-tighter">WHU-99281-XYZ</span>
+                            </div>
+                        </td>
+                        <td class="p-5 text-sm text-gray-500">12 Jan 2026</td>
+                        <td class="p-5 text-sm font-bold text-center md:text-left">12</td>
+                        <td class="p-5 text-sm font-bold text-green-600">Rp 180.000</td>
+                        <td class="p-5 text-xs text-gray-400 font-medium">10 Menit Lalu</td>
+                        <td class="p-5">
+                            <span class="status-active px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider italic">Trustworthy</span>
+                        </td>
+                        <td class="p-5 text-center">
+                            <button class="text-gray-300 hover:text-red-500 transition"><i class="fas fa-user-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-cream/20 transition">
+                        <td class="p-5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center text-red-600 text-[10px] font-bold">U2</div>
+                                <span class="font-mono text-sm font-bold tracking-tighter">WHU-10293-ABC</span>
+                            </div>
+                        </td>
+                        <td class="p-5 text-sm text-gray-500">05 Feb 2026</td>
+                        <td class="p-5 text-sm font-bold text-center md:text-left">1</td>
+                        <td class="p-5 text-sm font-bold text-green-600">Rp 15.000</td>
+                        <td class="p-5 text-xs text-gray-400 font-medium">2 Bulan Lalu</td>
+                        <td class="p-5">
+                            <span class="status-banned px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider italic">Banned</span>
+                        </td>
+                        <td class="p-5 text-center text-xs text-gray-300">Violated Terms</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <footer class="p-8 text-center text-gray-400 text-xs">
+        <p>&copy; 2026 We-Heard-You Professional Admin Suite. Seluruh data user dienkripsi menggunakan protokol AES-256.</p>
+    </footer>
+
+</body>
+</html>
