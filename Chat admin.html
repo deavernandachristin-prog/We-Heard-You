@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesi Konseling - We-Heard-You</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #FDFBF7; font-family: 'Inter', sans-serif; }
+        .bg-cream { background-color: #F8F3E9; }
+        .chat-bubble-admin { background-color: #6F4E37; color: white; border-radius: 20px 20px 4px 20px; }
+        .chat-bubble-client { background-color: #E6D5B8; color: #3C2A21; border-radius: 20px 20px 20px 4px; }
+        .sidebar-right { border-left: 1px solid #E6D5B8; }
+        .scroll-hide::-webkit-scrollbar { width: 4px; }
+        .scroll-hide::-webkit-scrollbar-thumb { background: #E6D5B8; border-radius: 10px; }
+    </style>
+</head>
+<body class="h-screen flex flex-col">
+
+    <nav class="bg-white border-b border-[#E6D5B8] px-6 py-3 flex justify-between items-center shadow-sm">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="text-gray-400 hover:text-coffee transition">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <div class="flex items-center gap-3 border-l pl-4">
+                <div class="w-10 h-10 bg-cream rounded-full flex items-center justify-center font-bold text-coffee text-xs">
+                    #92
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm">Anonim_Zebra99</h1>
+                    <span class="text-[10px] text-green-500 flex items-center gap-1 font-bold">
+                        <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> TERKONEKSI
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-6">
+            <div class="text-center bg-orange-50 px-4 py-1 rounded-full border border-orange-100">
+                <p class="text-[9px] font-bold text-orange-400 uppercase">Sisa Waktu Sesi</p>
+                <p class="text-sm font-black text-orange-700" id="session-timer">29:45</p>
+            </div>
+            <button onclick="confirmEndSession()" class="bg-red-50 text-red-600 px-4 py-2 rounded-xl text-xs font-black hover:bg-red-600 hover:text-white transition">
+                AKHIRI SESI
+            </button>
+        </div>
+    </nav>
+
+    <div class="flex flex-1 overflow-hidden">
+        
+        <div class="flex-1 flex flex-col bg-[#FDFBF7]">
+            <div class="flex-1 overflow-y-auto p-6 space-y-6 scroll-hide" id="chat-box">
+                
+                <div class="flex justify-center">
+                    <span class="bg-gray-100 text-[10px] text-gray-400 px-3 py-1 rounded-full uppercase font-bold tracking-widest">
+                        Sesi dimulai pukul 03:00 AM
+                    </span>
+                </div>
+
+                <div class="flex flex-col items-start space-y-1">
+                    <div class="chat-bubble-client p-4 max-w-md shadow-sm text-sm leading-relaxed">
+                        Halo.. saya merasa sangat cemas beberapa hari ini karena beban tugas kuliah yang menumpuk. Saya bingung harus mulai dari mana.
+                    </div>
+                    <span class="text-[9px] text-gray-400 ml-2">03:01 AM</span>
+                </div>
+
+                <div class="flex flex-col items-end space-y-1">
+                    <div class="chat-bubble-admin p-4 max-w-md shadow-sm text-sm leading-relaxed">
+                        Halo Zebra99, terima kasih sudah mau berbagi. Saya di sini untuk mendengarkanmu. Mari kita urai perlahan ya, mana yang paling terasa berat saat ini?
+                    </div>
+                    <span class="text-[9px] text-gray-400 mr-2 font-bold italic">Dibaca</span>
+                </div>
+
+                <div class="flex flex-col items-start space-y-1">
+                    <div class="chat-bubble-client p-4 max-w-md shadow-sm text-sm leading-relaxed">
+                        Terima kasih responnya.. Saya merasa tidak punya teman cerita yang tidak menghakimi saya.
+                    </div>
+                    <span class="text-[9px] text-gray-400 ml-2">03:05 AM</span>
+                </div>
+
+            </div>
+
+            <div class="p-4 bg-white border-t border-[#E6D5B8]">
+                <div class="max-w-4xl mx-auto flex items-end gap-3">
+                    <div class="flex-1 bg-gray-50 rounded-2xl p-2 border border-gray-100 flex items-end">
+                        <textarea rows="1" placeholder="Tulis pesan konseling..." class="w-full bg-transparent p-2 text-sm focus:outline-none resize-none overflow-hidden" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                        <button class="p-2 text-gray-400 hover:text-coffee transition">
+                            <i class="far fa-smile text-lg"></i>
+                        </button>
+                    </div>
+                    <button class="bg-coffee text-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 transition">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <aside class="w-80 bg-white sidebar-right hidden lg:flex flex-col p-6 overflow-y-auto">
+            <h3 class="font-black text-xs text-gray-400 uppercase tracking-[0.2em] mb-6">Tools Konseling</h3>
+            
+            <div class="mb-8">
+                <p class="text-xs font-bold mb-3">Template Balasan Cepat</p>
+                <div class="space-y-2">
+                    <button class="w-full text-left p-2 text-[11px] bg-cream rounded-lg hover:bg-[#E6D5B8] transition">"Terima kasih sudah berbagi..."</button>
+                    <button class="w-full text-left p-2 text-[11px] bg-cream rounded-lg hover:bg-[#E6D5B8] transition">"Apa yang kamu rasakan saat ini?"</button>
+                    <button class="w-full text-left p-2 text-[11px] bg-cream rounded-lg hover:bg-[#E6D5B8] transition">"Mari kita ambil nafas perlahan."</button>
+                </div>
+            </div>
+
+            <div class="flex-1">
+                <p class="text-xs font-bold mb-3">Catatan Admin (Privat)</p>
+                <textarea class="w-full h-40 bg-orange-50/50 border border-orange-100 rounded-xl p-3 text-xs focus:outline-none italic" placeholder="Tulis catatan observasi di sini... (Klien tidak bisa melihat ini)"></textarea>
+            </div>
+
+            <div class="mt-6 pt-6 border-t border-gray-100">
+                <div class="p-4 bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+                    <p class="text-[10px] font-bold text-gray-500 mb-2 italic">INFO TRANSAKSI</p>
+                    <div class="flex justify-between text-[11px]">
+                        <span>ID Transaksi</span>
+                        <span class="font-bold">TX-88291</span>
+                    </div>
+                    <div class="flex justify-between text-[11px] mt-1">
+                        <span>Status Bayar</span>
+                        <span class="text-green-600 font-bold">LUNAS (QRIS)</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <script>
+        function confirmEndSession() {
+            if(confirm("Apakah Anda yakin ingin mengakhiri sesi konseling ini? Seluruh riwayat chat akan dienkripsi dan dipindahkan ke arsip.")) {
+                alert("Sesi Berakhir. Mengalihkan ke Dashboard...");
+                window.location.href = "index.html";
+            }
+        }
+    </script>
+</body>
+</html>
