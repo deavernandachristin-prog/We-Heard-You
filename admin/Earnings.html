@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Heard You — Earnings</title>
+<style>
+*{box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+body{margin:0;background:radial-gradient(circle at top left,#31104b 0%,#130821 45%,#0b0416 100%);color:#fff}
+.container{display:flex;min-height:100vh}
+.sidebar{width:260px;padding:28px;background:rgba(255,255,255,.04);border-right:1px solid rgba(255,255,255,.08)}
+.logo{width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#8d5cff,#b66dff);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:18px}
+.brand{font-size:34px;font-weight:800;margin-bottom:6px}.tag{color:#cdb9dc;font-size:14px;margin-bottom:36px}
+.nav{display:flex;flex-direction:column;gap:12px}.nav a{color:#e9def3;text-decoration:none;padding:12px 14px;border-radius:12px}.nav a.active,.nav a:hover{background:rgba(255,255,255,.08)}
+.main{flex:1;padding:28px}
+.hero,.panel,.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:26px;backdrop-filter:blur(14px)}
+.hero{padding:26px}.hero h1{margin:0 0 8px;font-size:46px}.hero p{margin:0;color:#cdb9dc}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:22px 0}.card{padding:24px}.card .label{color:#cdb9dc;margin-bottom:10px}.card .value{font-size:28px;font-weight:800}
+.grid{display:grid;grid-template-columns:1.7fr 1fr;gap:22px}.panel{padding:22px}.panel h2{margin:0 0 18px;font-size:34px}
+.item{padding:18px;border-radius:18px;background:rgba(255,255,255,.04);margin-bottom:14px;border:1px solid rgba(255,255,255,.05)}
+.row{display:flex;justify-content:space-between;align-items:center}.green{color:#65ffb1;font-weight:700}.muted{color:#cdb9dc;line-height:1.9}
+.summary-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.growth{margin-top:22px;padding:18px;border-radius:18px;background:linear-gradient(135deg,rgba(122,44,242,.25),rgba(201,43,216,.18))}
+.bar{height:14px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin:10px 0}.fill{height:100%;background:linear-gradient(90deg,#7a2cf2,#c92bd8)}
+@media(max-width:1100px){.cards{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.sidebar{display:none}}
+</style>
+</head>
+<body>
+<div class="container">
+  <aside class="sidebar">
+    <div class="logo">☾</div>
+    <div class="brand">We Heard You</div>
+    <div class="tag">a safe place where your story is heard</div>
+    <nav class="nav">
+      <a href="index.html">Dashboard</a>
+      <a href="Activerooms.html">Active Rooms</a>
+      <a href="Waitingassignment.html">Waiting Assignment</a>
+      <a href="Bookinglist.html">Booking List</a>
+      <a href="Referralcontact.html">Referral Contact</a>
+      <a href="Listenerstatus.html">Listener Status</a>
+      <a href="Earnings.html">Earnings</a>
+      <a href="Settings.html">Settings</a>
+      <a href="Login.html">Logout</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <section class="hero">
+      <h1>Earnings Overview ✨</h1>
+      <p>Rekap pendapatan We Heard You selama 3 bulan (operasional 20.00–00.00), pricing Rp25.000 / session.</p>
+    </section>
+
+    <section class="cards">
+      <div class="card"><div class="label">Today Revenue</div><div class="value">Rp 100.000</div></div>
+      <div class="card"><div class="label">This Week</div><div class="value">Rp 575.000</div></div>
+      <div class="card"><div class="label">This Month</div><div class="value">Rp 2.625.000</div></div>
+      <div class="card"><div class="label">Total 3 Months</div><div class="value">Rp 7.850.000</div></div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <h2>Daily Earnings List</h2>
+        <div class="item">
+          <div class="row"><strong>03 May 2026</strong><span class="green">Rp 100.000</span></div>
+          <div class="muted">• 4 booking session<br>• payment verified: 4<br>• pending verification: 0</div>
+        </div>
+        <div class="item">
+          <div class="row"><strong>02 May 2026</strong><span class="green">Rp 75.000</span></div>
+          <div class="muted">• 3 booking session<br>• payment verified: 3<br>• pending verification: 1</div>
+        </div>
+        <div class="item">
+          <div class="row"><strong>01 May 2026</strong><span class="green">Rp 100.000</span></div>
+          <div class="muted">• 4 booking session<br>• payment verified: 4<br>• pending verification: 0</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel">
+          <h2>3-Month Summary</h2>
+          <div class="summary-row"><span>Month 1</span><strong>Rp 2.350.000</strong></div>
+          <div class="summary-row"><span>Month 2</span><strong>Rp 2.875.000</strong></div>
+          <div class="summary-row"><span>Month 3</span><strong>Rp 2.625.000</strong></div>
+          <div class="summary-row"><span>Total Sessions</span><strong>314</strong></div>
+          <div class="summary-row"><span>Average / Day</span><strong>Rp 87.000</strong></div>
+          <div class="summary-row" style="border:none"><span>Highest Day</span><strong>Rp 125.000</strong></div>
+        </div>
+
+        <div class="panel" style="margin-top:22px;">
+          <h2>Growth Performance 📈</h2>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:22px;padding:22px;">
+            <div style="height:280px;display:flex;align-items:flex-end;justify-content:space-around;gap:18px;border-bottom:1px solid rgba(255,255,255,.12);padding:10px 10px 0;">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:10px;"><div title="Rp 1.250.000" style="width:54px;height:80px;border-radius:12px 12px 0 0;background:linear-gradient(180deg,#8f63ff,#c92bd8);"></div><span style="color:#decfea;font-size:13px">Pre Launch</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:10px;"><div title="Rp 2.350.000" style="width:54px;height:150px;border-radius:12px 12px 0 0;background:linear-gradient(180deg,#8f63ff,#c92bd8);"></div><span style="color:#decfea;font-size:13px">Month 1</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:10px;"><div title="Rp 2.875.000" style="width:54px;height:190px;border-radius:12px 12px 0 0;background:linear-gradient(180deg,#8f63ff,#c92bd8);"></div><span style="color:#decfea;font-size:13px">Month 2</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:10px;"><div title="Rp 2.625.000" style="width:54px;height:172px;border-radius:12px 12px 0 0;background:linear-gradient(180deg,#8f63ff,#c92bd8);"></div><span style="color:#decfea;font-size:13px">Month 3</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:10px;"><div title="Rp 3.200.000 (Projection)" style="width:54px;height:220px;border-radius:12px 12px 0 0;background:linear-gradient(180deg,#8f63ff,#c92bd8);"></div><span style="color:#decfea;font-size:13px">Projection</span></div>
+            </div>
+            <p style="margin:16px 0 0;color:#cdb9dc">Projected organic growth based on increasing trust, referral conversion, and recurring bookings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>
