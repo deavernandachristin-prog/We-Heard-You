@@ -70,7 +70,7 @@ body{
       <p>a safe place where your story is heard</p>
     </div>
     <nav class="menu">
-      <a href="admin-index.html">Dashboard</a>
+      <a href="admin-Dashboard.html">Dashboard</a>
       <a href="admin-Activerooms.html">Active Rooms</a>
       <a href="admin-Waitingassignment.html" class="active">Waiting Assignment</a>
       <a href="admin-Bookinglist.html">Booking List</a>
@@ -78,7 +78,7 @@ body{
       <a href="admin-Listenerstatus.html">Listener Status</a>
       <a href="admin-Earnings.html">Earnings</a>
       <a href="admin-Settings.html">Settings</a>
-      <a href="admin-Login.html">Logout</a>
+      <a href="admin-index.html">Logout</a>
     </nav>
     <div class="footer-note">made by psychology student</div>
   </aside>
@@ -132,7 +132,7 @@ const isAdmin = sessionStorage.getItem('why_is_admin') === 'true'
 const listenerName = sessionStorage.getItem('why_listener_name')
 
 if(!isAdmin || !listenerName) {
-  window.location.href = 'admin-Login.html'
+  window.location.href = 'admin-index.html'
 }
 
 document.getElementById('myListenerName').textContent = listenerName
