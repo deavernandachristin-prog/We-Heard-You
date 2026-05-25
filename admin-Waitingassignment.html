@@ -48,7 +48,6 @@ body{
   height:100vh;
 }
 
-/* sidebar */
 .sidebar{
   width:250px;
   flex-shrink:0;
@@ -104,13 +103,13 @@ body{
   opacity:.55;
 }
 
-/* content */
 .content{
   flex:1;
   display:grid;
   grid-template-columns:1.6fr .9fr;
   gap:24px;
   padding:28px;
+  overflow:hidden;
 }
 
 .glass{
@@ -123,7 +122,7 @@ body{
 
 .main{
   padding:26px;
-  overflow:auto;
+  overflow-y:auto;
 }
 
 .main h1{
@@ -148,6 +147,12 @@ body{
   border-radius:22px;
   background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.06);
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(10px); }
+  to { opacity:1; transform:translateY(0); }
 }
 
 .top{
@@ -184,13 +189,25 @@ body{
   color:white;
   font-weight:600;
   cursor:pointer;
+  transition:.3s;
 }
 
-/* right */
+.join-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(143,108,255,.4);
+}
+
+.join-btn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+  transform:none;
+}
+
 .side{
   display:flex;
   flex-direction:column;
   gap:22px;
+  overflow-y:auto;
 }
 
 .panel{
@@ -209,19 +226,6 @@ body{
 }
 
 .metric:last-child{border-bottom:none;}
-
-.listener{
-  display:flex;
-  justify-content:space-between;
-  padding:12px 0;
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.listener:last-child{border-bottom:none;}
-
-.green{color:#7bffbf;}
-.orange{color:#ffcb7d;}
-.gray{color:#9a98a8;}
 
 .gentle{
   flex:1;
@@ -253,6 +257,33 @@ body{
   opacity:.7;
   line-height:1.8;
 }
+
+.empty-state{
+  text-align:center;
+  padding:60px 20px;
+  opacity:.6;
+}
+
+.empty-state p{
+  margin-top:12px;
+  font-size:15px;
+  line-height:1.8;
+}
+
+.wait-time{
+  font-size:13px;
+  opacity:.7;
+}
+
+.joined-badge{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(143,108,255,.2);
+  color:#c8b0ff;
+  font-size:13px;
+  margin-top:10px;
+}
 </style>
 </head>
 <body>
@@ -272,7 +303,7 @@ body{
     <nav class="menu">
       <a href="admin-index.html">Dashboard</a>
       <a href="admin-Activerooms.html">Active Rooms</a>
-      <a href="admin-Waitingassignment.html">Waiting Assignment</a>
+      <a href="admin-Waitingassignment.html" class="active">Waiting Assignment</a>
       <a href="admin-Bookinglist.html">Booking List</a>
       <a href="admin-Referralcontact.html">Referral Contact</a>
       <a href="admin-Listenerstatus.html">Listener Status</a>
@@ -293,56 +324,11 @@ body{
         for a listener to gently step in. Priority is based on waiting time.
       </p>
 
-      <div class="queue">
-
-        <div class="card">
-          <div class="top">
-            <div>
-              <h3>Anonymous Soul #006</h3>
-              <span class="badge">Payment Verified ✓</span>
-            </div>
-            <strong>Waiting 2m 14s</strong>
-          </div>
-
-          <p class="waiting">
-            Quiet room prepared and ready to be joined.
-          </p>
-
-          <button class="join-btn">Join Session</button>
+      <div class="queue" id="queueList">
+        <div class="empty-state">
+          <div style="font-size:40px">🌙</div>
+          <p>No one waiting right now.<br>Check back soon.</p>
         </div>
-
-        <div class="card">
-          <div class="top">
-            <div>
-              <h3>Anonymous Soul #007</h3>
-              <span class="badge">Payment Verified ✓</span>
-            </div>
-            <strong>Waiting 58s</strong>
-          </div>
-
-          <p class="waiting">
-            Waiting patiently for a gentle listener.
-          </p>
-
-          <button class="join-btn">Join Session</button>
-        </div>
-
-        <div class="card">
-          <div class="top">
-            <div>
-              <h3>Anonymous Soul #008</h3>
-              <span class="badge">Payment Verified ✓</span>
-            </div>
-            <strong>Waiting 12s</strong>
-          </div>
-
-          <p class="waiting">
-            Newly verified and added to tonight's queue.
-          </p>
-
-          <button class="join-btn">Join Session</button>
-        </div>
-
       </div>
     </section>
 
@@ -350,29 +336,14 @@ body{
 
       <div class="glass panel">
         <h3>Queue Summary</h3>
-
-        <div class="metric"><span>Total Waiting</span><strong>3</strong></div>
-        <div class="metric"><span>Ready Listener</span><strong>4</strong></div>
-        <div class="metric"><span>Average Wait</span><strong>1m 08s</strong></div>
-      </div>
-
-      <div class="glass panel">
-        <h3>Listeners Online 🌙</h3>
-
-        <div class="listener"><strong>Sakura</strong><span class="green">Available</span></div>
-        <div class="listener"><strong>Aurora</strong><span class="orange">In Session</span></div>
-        <div class="listener"><strong>Luna</strong><span class="green">Available</span></div>
-        <div class="listener"><strong>Solace</strong><span class="gray">Offline</span></div>
-        <div class="listener"><strong>Echo</strong><span class="green">Available</span></div>
-        <div class="listener"><strong>Haven</strong><span class="green">Available</span></div>
+        <div class="metric"><span>Total Waiting</span><strong id="totalWaiting">0</strong></div>
+        <div class="metric"><span>Status</span><strong id="queueStatus">Quiet</strong></div>
       </div>
 
       <div class="glass gentle">
         <div>
           <h3>Someone is waiting to be heard tonight 🌙</h3>
-          <p>
-            A gentle presence can make all the difference.
-          </p>
+          <p>A gentle presence can make all the difference.</p>
         </div>
       </div>
 
@@ -381,6 +352,131 @@ body{
   </main>
 
 </div>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+const supabaseUrl = 'https://dhsqzpnemvwmwefqrbkm.supabase.co'
+const supabaseKey = 'sb_publishable_WcqyP66rmzlNK3rQJTv49w_yWtOUOmq'
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+const listenerName = sessionStorage.getItem('why_listener_name') || 'Listener'
+
+const queueList = document.getElementById('queueList')
+const totalWaitingEl = document.getElementById('totalWaiting')
+const queueStatusEl = document.getElementById('queueStatus')
+
+// Hitung waktu tunggu
+function getWaitTime(createdAt) {
+  const diff = Math.floor((Date.now() - new Date(createdAt).getTime()) / 1000)
+  if (diff < 60) return `${diff}s`
+  return `${Math.floor(diff / 60)}m ${diff % 60}s`
+}
+
+// Render daftar waiting
+function renderQueue(data) {
+  totalWaitingEl.textContent = data.length
+  queueStatusEl.textContent = data.length > 0 ? 'Active' : 'Quiet'
+
+  if (data.length === 0) {
+    queueList.innerHTML = `
+      <div class="empty-state">
+        <div style="font-size:40px">🌙</div>
+        <p>No one waiting right now.<br>Check back soon.</p>
+      </div>
+    `
+    return
+  }
+
+  queueList.innerHTML = ''
+
+  data.forEach(room => {
+    const card = document.createElement('div')
+    card.className = 'card'
+    card.id = `card-${room.id}`
+
+    const isJoined = room.status === 'active'
+
+    card.innerHTML = `
+      <div class="top">
+        <div>
+          <h3>${room.username}</h3>
+          <span class="badge">Payment Verified ✓</span>
+        </div>
+        <span class="wait-time">Waiting ${getWaitTime(room.created_at)}</span>
+      </div>
+      <p class="waiting">Quiet room prepared and ready to be joined.</p>
+      ${isJoined
+        ? `<div class="joined-badge">✓ Joined by ${room.listener_name}</div>`
+        : `<button class="join-btn" onclick="joinSession(${room.id}, '${room.username}')">Join Session</button>`
+      }
+    `
+
+    queueList.appendChild(card)
+  })
+}
+
+// Load data awal
+async function loadWaiting() {
+  const { data, error } = await supabase
+    .from('waiting_rooms')
+    .select('*')
+    .order('created_at', { ascending: true })
+
+  if (error) { console.error(error); return }
+  renderQueue(data)
+}
+
+loadWaiting()
+
+// Update wait time tiap detik
+setInterval(async () => {
+  const { data } = await supabase
+    .from('waiting_rooms')
+    .select('*')
+    .order('created_at', { ascending: true })
+  if (data) renderQueue(data)
+}, 10000)
+
+// Realtime subscribe
+supabase
+  .channel('waiting-room-changes')
+  .on('postgres_changes', {
+    event: '*',
+    schema: 'public',
+    table: 'waiting_rooms'
+  }, () => {
+    loadWaiting()
+  })
+  .subscribe()
+
+// Listener join session
+window.joinSession = async function(id, username) {
+  const btn = document.querySelector(`#card-${id} .join-btn`)
+  if (btn) { btn.disabled = true; btn.textContent = 'Joining...' }
+
+  const { error } = await supabase
+    .from('waiting_rooms')
+    .update({
+      status: 'active',
+      listener_name: listenerName
+    })
+    .eq('id', id)
+
+  if (error) {
+    console.error(error)
+    if (btn) { btn.disabled = false; btn.textContent = 'Join Session' }
+    return
+  }
+
+  // Simpan info room ke session
+  sessionStorage.setItem('why_listener_name', listenerName)
+  sessionStorage.setItem('why_room_username', username)
+
+  // Arahkan ke chatroom
+  window.location.href = 'chatroom.html'
+}
+</script>
 
 </body>
 </html>
