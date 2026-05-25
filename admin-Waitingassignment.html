@@ -16,274 +16,45 @@ body{
   radial-gradient(circle at bottom left, rgba(255,214,244,.10), transparent 35%),
   linear-gradient(135deg,#171320,#221a33,#2d2243,#241c36);
 }
-
-.moon{
-  position:absolute;
-  top:-60px;
-  right:90px;
-  width:220px;
-  height:220px;
-  border-radius:50%;
-  background:radial-gradient(circle,#fff,#ddd0ff 55%,transparent 70%);
-  opacity:.08;
-  filter:blur(8px);
-}
-
-.flower{
-  position:absolute;
-  width:240px;
-  height:240px;
-  left:-80px;
-  bottom:-80px;
-  border-radius:50%;
-  background:#a27dff;
-  opacity:.10;
-  filter:blur(90px);
-}
-
-.layout{
-  position:relative;
-  z-index:2;
-  display:flex;
-  height:100vh;
-}
-
-.sidebar{
-  width:250px;
-  flex-shrink:0;
-  background:rgba(255,255,255,.05);
-  backdrop-filter:blur(20px);
-  border-right:1px solid rgba(255,255,255,.08);
-  padding:28px 22px;
-  display:flex;
-  flex-direction:column;
-}
-
-.logo-box{
-  width:62px;
-  height:62px;
-  border-radius:18px;
-  background:linear-gradient(135deg,#b996ff,#8f6cff);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:26px;
-  margin-bottom:14px;
-  box-shadow:0 10px 30px rgba(143,108,255,.35);
-}
-
+.moon{position:absolute;top:-60px;right:90px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#fff,#ddd0ff 55%,transparent 70%);opacity:.08;filter:blur(8px);}
+.flower{position:absolute;width:240px;height:240px;left:-80px;bottom:-80px;border-radius:50%;background:#a27dff;opacity:.10;filter:blur(90px);}
+.layout{position:relative;z-index:2;display:flex;height:100vh;}
+.sidebar{width:250px;flex-shrink:0;background:rgba(255,255,255,.05);backdrop-filter:blur(20px);border-right:1px solid rgba(255,255,255,.08);padding:28px 22px;display:flex;flex-direction:column;}
+.logo-box{width:62px;height:62px;border-radius:18px;background:linear-gradient(135deg,#b996ff,#8f6cff);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:14px;box-shadow:0 10px 30px rgba(143,108,255,.35);}
 .logo h2{font-size:20px;margin-bottom:4px;}
 .logo p{font-size:12px;opacity:.7;margin-bottom:28px;}
-
-.menu{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.menu a{
-  text-decoration:none;
-  color:white;
-  padding:14px 16px;
-  border-radius:14px;
-  opacity:.82;
-  transition:.25s;
-}
-
-.menu a:hover,
-.menu a.active{
-  background:rgba(255,255,255,.08);
-  opacity:1;
-  transform:translateX(4px);
-}
-
-.footer-note{
-  margin-top:auto;
-  font-size:12px;
-  opacity:.55;
-}
-
-.content{
-  flex:1;
-  display:grid;
-  grid-template-columns:1.6fr .9fr;
-  gap:24px;
-  padding:28px;
-  overflow:hidden;
-}
-
-.glass{
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(255,255,255,.08);
-  backdrop-filter:blur(18px);
-  border-radius:26px;
-  box-shadow:0 15px 40px rgba(0,0,0,.18);
-}
-
-.main{
-  padding:26px;
-  overflow-y:auto;
-}
-
-.main h1{
-  font-size:30px;
-  margin-bottom:8px;
-}
-
-.subtitle{
-  opacity:.75;
-  margin-bottom:24px;
-  line-height:1.8;
-}
-
-.queue{
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
-
-.card{
-  padding:22px;
-  border-radius:22px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.06);
-  animation: fadeIn 0.4s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity:0; transform:translateY(10px); }
-  to { opacity:1; transform:translateY(0); }
-}
-
-.top{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  margin-bottom:14px;
-}
-
-.top h3{
-  margin-bottom:8px;
-}
-
-.badge{
-  display:inline-block;
-  padding:8px 14px;
-  border-radius:999px;
-  background:rgba(123,255,191,.12);
-  color:#8fffc8;
-  font-size:13px;
-}
-
-.waiting{
-  opacity:.8;
-  line-height:1.8;
-}
-
-.join-btn{
-  margin-top:18px;
-  border:none;
-  padding:12px 20px;
-  border-radius:14px;
-  background:linear-gradient(135deg,#b08cff,#8f6cff);
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.join-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(143,108,255,.4);
-}
-
-.join-btn:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-  transform:none;
-}
-
-.side{
-  display:flex;
-  flex-direction:column;
-  gap:22px;
-  overflow-y:auto;
-}
-
-.panel{
-  padding:24px;
-}
-
-.panel h3{
-  margin-bottom:18px;
-}
-
-.metric{
-  padding:14px 0;
-  border-bottom:1px solid rgba(255,255,255,.06);
-  display:flex;
-  justify-content:space-between;
-}
-
+.menu{display:flex;flex-direction:column;gap:10px;}
+.menu a{text-decoration:none;color:white;padding:14px 16px;border-radius:14px;opacity:.82;transition:.25s;}
+.menu a:hover,.menu a.active{background:rgba(255,255,255,.08);opacity:1;transform:translateX(4px);}
+.footer-note{margin-top:auto;font-size:12px;opacity:.55;}
+.content{flex:1;display:grid;grid-template-columns:1.6fr .9fr;gap:24px;padding:28px;overflow:hidden;}
+.glass{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(18px);border-radius:26px;box-shadow:0 15px 40px rgba(0,0,0,.18);}
+.main{padding:26px;overflow-y:auto;}
+.main h1{font-size:30px;margin-bottom:8px;}
+.subtitle{opacity:.75;margin-bottom:24px;line-height:1.8;}
+.queue{display:flex;flex-direction:column;gap:18px;}
+.card{padding:22px;border-radius:22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);animation:fadeIn .4s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+.top h3{margin-bottom:8px;}
+.badge{display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(123,255,191,.12);color:#8fffc8;font-size:13px;}
+.waiting{opacity:.8;line-height:1.8;}
+.join-btn{margin-top:18px;border:none;padding:12px 20px;border-radius:14px;background:linear-gradient(135deg,#b08cff,#8f6cff);color:white;font-weight:600;cursor:pointer;transition:.3s;}
+.join-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(143,108,255,.4);}
+.join-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.side{display:flex;flex-direction:column;gap:22px;overflow-y:auto;}
+.panel{padding:24px;}
+.panel h3{margin-bottom:18px;}
+.metric{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;}
 .metric:last-child{border-bottom:none;}
-
-.gentle{
-  flex:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:26px;
-  position:relative;
-  overflow:hidden;
-}
-
-.gentle::before{
-  content:"☾";
-  position:absolute;
-  font-size:170px;
-  opacity:.05;
-  right:30px;
-  top:10px;
-}
-
-.gentle h3{
-  font-size:22px;
-  margin-bottom:12px;
-  font-weight:500;
-}
-
-.gentle p{
-  opacity:.7;
-  line-height:1.8;
-}
-
-.empty-state{
-  text-align:center;
-  padding:60px 20px;
-  opacity:.6;
-}
-
-.empty-state p{
-  margin-top:12px;
-  font-size:15px;
-  line-height:1.8;
-}
-
-.wait-time{
-  font-size:13px;
-  opacity:.7;
-}
-
-.joined-badge{
-  display:inline-block;
-  padding:8px 14px;
-  border-radius:999px;
-  background:rgba(143,108,255,.2);
-  color:#c8b0ff;
-  font-size:13px;
-  margin-top:10px;
-}
+.gentle{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:26px;position:relative;overflow:hidden;}
+.gentle::before{content:"☾";position:absolute;font-size:170px;opacity:.05;right:30px;top:10px;}
+.gentle h3{font-size:22px;margin-bottom:12px;font-weight:500;}
+.gentle p{opacity:.7;line-height:1.8;}
+.empty-state{text-align:center;padding:60px 20px;opacity:.6;}
+.empty-state p{margin-top:12px;font-size:15px;line-height:1.8;}
+.wait-time{font-size:13px;opacity:.7;}
+.listener-name{font-size:13px;opacity:.6;margin-top:4px;}
 </style>
 </head>
 <body>
@@ -292,14 +63,12 @@ body{
 <div class="flower"></div>
 
 <div class="layout">
-
   <aside class="sidebar">
     <div class="logo">
       <div class="logo-box">☾</div>
       <h2>We Heard You</h2>
       <p>a safe place where your story is heard</p>
     </div>
-
     <nav class="menu">
       <a href="admin-index.html">Dashboard</a>
       <a href="admin-Activerooms.html">Active Rooms</a>
@@ -311,19 +80,16 @@ body{
       <a href="admin-Settings.html">Settings</a>
       <a href="admin-Login.html">Logout</a>
     </nav>
-
     <div class="footer-note">made by psychology student</div>
   </aside>
 
   <main class="content">
-
     <section class="glass main">
       <h1>Waiting Assignment 🌷</h1>
       <p class="subtitle">
         These rooms have completed payment verification and are waiting
         for a listener to gently step in. Priority is based on waiting time.
       </p>
-
       <div class="queue" id="queueList">
         <div class="empty-state">
           <div style="font-size:40px">🌙</div>
@@ -333,24 +99,26 @@ body{
     </section>
 
     <aside class="side">
-
       <div class="glass panel">
         <h3>Queue Summary</h3>
         <div class="metric"><span>Total Waiting</span><strong id="totalWaiting">0</strong></div>
         <div class="metric"><span>Status</span><strong id="queueStatus">Quiet</strong></div>
       </div>
-
+      <div class="glass panel">
+        <h3>Logged in as 🌙</h3>
+        <div class="metric">
+          <span>Listener Name</span>
+          <strong id="myListenerName">-</strong>
+        </div>
+      </div>
       <div class="glass gentle">
         <div>
           <h3>Someone is waiting to be heard tonight 🌙</h3>
           <p>A gentle presence can make all the difference.</p>
         </div>
       </div>
-
     </aside>
-
   </main>
-
 </div>
 
 <script type="module">
@@ -360,25 +128,31 @@ const supabaseUrl = 'https://dhsqzpnemvwmwefqrbkm.supabase.co'
 const supabaseKey = 'sb_publishable_WcqyP66rmzlNK3rQJTv49w_yWtOUOmq'
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-const listenerName = sessionStorage.getItem('why_listener_name') || 'Listener'
+const isAdmin = sessionStorage.getItem('why_is_admin') === 'true'
+const listenerName = sessionStorage.getItem('why_listener_name')
+
+if(!isAdmin || !listenerName) {
+  window.location.href = 'admin-Login.html'
+}
+
+document.getElementById('myListenerName').textContent = listenerName
 
 const queueList = document.getElementById('queueList')
 const totalWaitingEl = document.getElementById('totalWaiting')
 const queueStatusEl = document.getElementById('queueStatus')
 
-// Hitung waktu tunggu
 function getWaitTime(createdAt) {
   const diff = Math.floor((Date.now() - new Date(createdAt).getTime()) / 1000)
-  if (diff < 60) return `${diff}s`
+  if(diff < 60) return `${diff}s`
   return `${Math.floor(diff / 60)}m ${diff % 60}s`
 }
 
-// Render daftar waiting
 function renderQueue(data) {
-  totalWaitingEl.textContent = data.length
-  queueStatusEl.textContent = data.length > 0 ? 'Active' : 'Quiet'
+  const waiting = data.filter(r => r.status === 'waiting')
+  totalWaitingEl.textContent = waiting.length
+  queueStatusEl.textContent = waiting.length > 0 ? 'Active' : 'Quiet'
 
-  if (data.length === 0) {
+  if(waiting.length === 0) {
     queueList.innerHTML = `
       <div class="empty-state">
         <div style="font-size:40px">🌙</div>
@@ -389,91 +163,62 @@ function renderQueue(data) {
   }
 
   queueList.innerHTML = ''
-
-  data.forEach(room => {
+  waiting.forEach(room => {
     const card = document.createElement('div')
     card.className = 'card'
     card.id = `card-${room.id}`
-
-    const isJoined = room.status === 'active'
-
     card.innerHTML = `
       <div class="top">
         <div>
           <h3>${room.username}</h3>
           <span class="badge">Payment Verified ✓</span>
+          <div class="listener-name">${room.email || ''}</div>
         </div>
         <span class="wait-time">Waiting ${getWaitTime(room.created_at)}</span>
       </div>
       <p class="waiting">Quiet room prepared and ready to be joined.</p>
-      ${isJoined
-        ? `<div class="joined-badge">✓ Joined by ${room.listener_name}</div>`
-        : `<button class="join-btn" onclick="joinSession(${room.id}, '${room.username}')">Join Session</button>`
-      }
+      <button class="join-btn" onclick="joinSession(${room.id}, '${room.username}')">Join Session</button>
     `
-
     queueList.appendChild(card)
   })
 }
 
-// Load data awal
 async function loadWaiting() {
   const { data, error } = await supabase
     .from('waiting_rooms')
     .select('*')
     .order('created_at', { ascending: true })
-
-  if (error) { console.error(error); return }
+  if(error) { console.error(error); return }
   renderQueue(data)
 }
 
 loadWaiting()
+setInterval(loadWaiting, 10000)
 
-// Update wait time tiap detik
-setInterval(async () => {
-  const { data } = await supabase
-    .from('waiting_rooms')
-    .select('*')
-    .order('created_at', { ascending: true })
-  if (data) renderQueue(data)
-}, 10000)
-
-// Realtime subscribe
 supabase
   .channel('waiting-room-changes')
-  .on('postgres_changes', {
-    event: '*',
-    schema: 'public',
-    table: 'waiting_rooms'
-  }, () => {
+  .on('postgres_changes', { event: '*', schema: 'public', table: 'waiting_rooms' }, () => {
     loadWaiting()
   })
   .subscribe()
 
-// Listener join session
 window.joinSession = async function(id, username) {
   const btn = document.querySelector(`#card-${id} .join-btn`)
-  if (btn) { btn.disabled = true; btn.textContent = 'Joining...' }
+  if(btn) { btn.disabled = true; btn.textContent = 'Joining...' }
 
   const { error } = await supabase
     .from('waiting_rooms')
-    .update({
-      status: 'active',
-      listener_name: listenerName
-    })
+    .update({ status: 'active', listener_name: listenerName })
     .eq('id', id)
 
-  if (error) {
+  if(error) {
     console.error(error)
-    if (btn) { btn.disabled = false; btn.textContent = 'Join Session' }
+    if(btn) { btn.disabled = false; btn.textContent = 'Join Session' }
     return
   }
 
-  // Simpan info room ke session
-  sessionStorage.setItem('why_listener_name', listenerName)
+  sessionStorage.setItem('why_room_id', id)
   sessionStorage.setItem('why_room_username', username)
-
-  // Arahkan ke chatroom
   window.location.href = 'chatroom.html'
 }
 </script>
