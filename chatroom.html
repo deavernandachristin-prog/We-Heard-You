@@ -460,6 +460,30 @@ chatArea.scrollHeight
 
 loadMessages()
 
+// Daftarkan user ke waiting_rooms
+async function registerWaiting(){
+    const email = sessionStorage.getItem('why_email') || ''
+    
+    // Cek apakah sudah terdaftar
+    const { data } = await supabase
+        .from('waiting_rooms')
+        .select('*')
+        .eq('username', username)
+        .eq('status', 'waiting')
+    
+    if(data && data.length === 0){
+        await supabase
+            .from('waiting_rooms')
+            .insert([{
+                username: username,
+                email: email,
+                status: 'waiting'
+            }])
+    }
+}
+
+registerWaiting()
+    
 let timeLeft = 30 * 60;
 let extendOfferShown = false;
 let sessionEnded = false;
