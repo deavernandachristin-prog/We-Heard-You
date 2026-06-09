@@ -390,9 +390,7 @@ function addSystemMessage(html) {
 }
 
 function extendSession(minutes) {
-    timeLeft += minutes * 60
-    timerEl.classList.remove("warning","danger")
-    addSystemMessage(`<div class="received">Your session has been extended by ${minutes} minutes 🌙</div>`)
+    window.location.href = "payment.html"
 }
 
 function showExtendOffer() {
@@ -409,12 +407,10 @@ function showExtendOffer() {
 }
 
 function chooseExtend(answer) {
-    document.querySelectorAll(".choice-btn").forEach(btn => btn.disabled = true)
-    if(answer) {
-        addSystemMessage(`<div class="sent">Iya, aku mau</div>`)
-        extendSession(30)
-        extendOfferShown = false
-    } else {
+   if(answer) {
+    addSystemMessage(`<div class="sent">Iya, aku mau</div>`)
+    setTimeout(() => extendSession(30), 1000)
+} else {
         addSystemMessage(`<div class="sent">No, thanks</div>`)
     }
 }
