@@ -1,0 +1,390 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Heard You | Professional Recommendation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+html,body{
+    width:100%;
+    min-height:100vh;
+    overflow-x:hidden;
+    color:white;
+    background:
+    radial-gradient(circle at top left, rgba(138,118,191,.20), transparent 30%),
+    radial-gradient(circle at top right, rgba(91,62,145,.18), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(217,194,175,.10), transparent 30%),
+    linear-gradient(135deg,#100B19,#1A1330,#24173E);
+}
+
+/* ambient glow */
+.glow{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:.14;
+    z-index:0;
+    animation:float 10s ease-in-out infinite;
+}
+
+.g1{
+    width:420px;
+    height:420px;
+    background:#866CB0;
+    top:-120px;
+    left:-100px;
+}
+
+.g2{
+    width:330px;
+    height:330px;
+    background:#D9C2AF;
+    bottom:-90px;
+    right:-70px;
+    animation-delay:2s;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:1200px;
+    margin:auto;
+    padding:70px 28px 60px;
+}
+
+/* header */
+.hero{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.logo{
+    width:95px;
+    margin-bottom:18px;
+    filter:drop-shadow(0 10px 30px rgba(0,0,0,.25));
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:14px;
+    background:linear-gradient(90deg,#fff,#EBDFFF,#D9C2AF);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    max-width:760px;
+    margin:auto;
+    color:#CFC3E6;
+    line-height:1.9;
+    font-size:15px;
+}
+
+/* cards */
+.grid{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+}
+
+.card{
+    display:flex;
+    gap:28px;
+    align-items:center;
+    padding:28px;
+    border-radius:32px;
+
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.20),
+    inset 0 1px 0 rgba(255,255,255,.05);
+
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* photo */
+.photo-wrap{
+    flex-shrink:0;
+    width:165px;
+    height:165px;
+    border-radius:28px;
+    padding:6px;
+    background:linear-gradient(135deg,#866CB0,#D9C2AF);
+}
+
+.photo{
+    width:100%;
+    height:100%;
+    border-radius:24px;
+    object-fit:cover;
+    display:block;
+}
+
+/* content */
+.info{
+    flex:1;
+}
+
+.name{
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.role{
+    color:#D9C2AF;
+    font-size:14px;
+    letter-spacing:2px;
+    margin-bottom:16px;
+}
+
+.desc{
+    color:#DED6EC;
+    line-height:1.9;
+    margin-bottom:18px;
+    font-size:15px;
+}
+
+.speciality{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:30px;
+    margin-bottom:18px;
+    font-size:13px;
+    color:#E9DFFF;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+/* contacts */
+.contact{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.contact a{
+    text-decoration:none;
+    color:white;
+    padding:12px 18px;
+    border-radius:18px;
+    font-size:14px;
+    transition:.25s;
+}
+
+.wa{
+    background:linear-gradient(135deg,#25D366,#128C7E);
+}
+
+.ig{
+    background:linear-gradient(135deg,#833AB4,#FD1D1D,#FCAF45);
+}
+
+.contact a:hover{
+    transform:translateY(-2px);
+}
+
+/* note */
+.note{
+    margin-top:42px;
+    text-align:center;
+    color:#BDAFD8;
+    line-height:1.9;
+    font-size:14px;
+}
+
+/* back */
+.bottom{
+    margin-top:45px;
+    text-align:center;
+}
+
+.home-btn{
+    display:inline-block;
+    text-decoration:none;
+    color:white;
+    padding:16px 34px;
+    border-radius:40px;
+    font-weight:600;
+    background:linear-gradient(135deg,#5D4A82,#866CB0,#B89B8A);
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+    transition:.3s;
+}
+
+.home-btn:hover{
+    transform:translateY(-3px);
+}
+
+@media(max-width:900px){
+    .card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .contact{
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .name{
+        font-size:24px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<div class="container">
+
+    <div class="hero">
+        <img src="logo.png" class="logo">
+        <h1>Professional Recommendation</h1>
+        <p>
+            Based on your session with We Heard You, we gently recommend
+            several trusted professionals who may support your next step.
+            You may directly contact them through their professional channels.
+        </p>
+    </div>
+
+    <div class="grid">
+
+        <!-- psychologist 1 -->
+        <div class="card">
+            <div class="photo-wrap">
+                <img src="psy1.jpg" class="photo">
+            </div>
+
+            <div class="info">
+                <div class="name">Dr. Aisha Rahman, M.Psi., Psikolog</div>
+                <div class="role">CLINICAL PSYCHOLOGIST</div>
+
+                <div class="speciality">
+                    Anxiety • Emotional Burnout • Quarter Life Crisis
+                </div>
+
+                <div class="desc">
+                    Dr. Aisha focuses on emotional overwhelm, overthinking,
+                    identity struggles, and navigating uncertain life direction.
+                    Her approach is warm, reflective, and deeply calming.
+                </div>
+
+                <div class="contact">
+                    <a class="wa" href="https://wa.me/6281234567890" target="_blank">
+                        WhatsApp Business
+                    </a>
+
+                    <a class="ig" href="https://instagram.com/" target="_blank">
+                        Instagram Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- psychologist 2 -->
+        <div class="card">
+            <div class="photo-wrap">
+                <img src="psy2.jpg" class="photo">
+            </div>
+
+            <div class="info">
+                <div class="name">Dr. Kevin Santoso, M.Psi., Psikolog</div>
+                <div class="role">COUNSELING PSYCHOLOGIST</div>
+
+                <div class="speciality">
+                    Family Pressure • Self Worth • Emotional Healing
+                </div>
+
+                <div class="desc">
+                    Dr. Kevin helps individuals facing family expectations,
+                    internal pressure, and long-term emotional exhaustion.
+                    Sessions are grounded, compassionate, and practical.
+                </div>
+
+                <div class="contact">
+                    <a class="wa" href="https://wa.me/6281234567890" target="_blank">
+                        WhatsApp Business
+                    </a>
+
+                    <a class="ig" href="https://instagram.com/" target="_blank">
+                        Instagram Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- psychologist 3 -->
+        <div class="card">
+            <div class="photo-wrap">
+                <img src="psy3.jpg" class="photo">
+            </div>
+
+            <div class="info">
+                <div class="name">Dr. Maya Lestari, M.Psi., Psikolog</div>
+                <div class="role">MENTAL HEALTH SPECIALIST</div>
+
+                <div class="speciality">
+                    Identity Crisis • Anxiety • Personal Growth
+                </div>
+
+                <div class="desc">
+                    Dr. Maya specializes in helping young adults understand
+                    themselves more deeply, process difficult emotions,
+                    and rebuild inner confidence.
+                </div>
+
+                <div class="contact">
+                    <a class="wa" href="https://wa.me/6281234567890" target="_blank">
+                        WhatsApp Business
+                    </a>
+
+                    <a class="ig" href="https://instagram.com/" target="_blank">
+                        Instagram Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="note">
+        We Heard You only facilitates recommendation, information, and professional contact connection.
+        Sessions with psychologists are conducted outside this platform.
+    </div>
+
+    <div class="bottom">
+        <a href="homepage.html" class="home-btn">← Back to Homepage</a>
+    </div>
+
+</div>
+
+</body>
+</html>
+```
