@@ -197,7 +197,7 @@ button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed;}
 
         <div class="timer-box">
             <div class="timer-label">SESSION TIME</div>
-            <div class="timer" id="timer">1:00</div>
+            <div class="timer" id="timer">15:00</div>
         </div>
     </div>
 </header>
@@ -377,7 +377,7 @@ const input = document.getElementById("messageInput")
 const sendBtn = document.getElementById("sendBtn")
 const chatArea = document.getElementById("chatArea")
 
-let timeLeft = 1 * 60
+let timeLeft = 15 * 60
 let extendOfferShown = false
 let sessionEnded = false
 
@@ -396,7 +396,7 @@ function extendSession(minutes) {
 function showExtendOffer() {
     addSystemMessage(`
         <div class="received">
-            Your session will end in 3 minutes.<br>
+            Your session will end in 3o second.<br>
             Would you like to extend your time?
             <div class="quick-reply">
                 <button class="choice-btn" onclick="chooseExtend(true)">Iya, aku mau</button>
