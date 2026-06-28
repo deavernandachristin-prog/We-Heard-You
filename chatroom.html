@@ -396,8 +396,8 @@ function extendSession(minutes) {
 function showExtendOffer() {
     addSystemMessage(`
         <div class="received">
-            Your session will end in 3o second.<br>
-            Would you like to extend your time?
+            Sesi kita bakal selesai dalam 3 menit.<br>
+            Kamu mau extend waktu?
             <div class="quick-reply">
                 <button class="choice-btn" onclick="chooseExtend(true)">Iya, aku mau</button>
                 <button class="choice-btn" onclick="chooseExtend(false)">No, thanks</button>
@@ -418,8 +418,8 @@ function chooseExtend(answer) {
 function showPsychologistOffer() {
     addSystemMessage(`
         <div class="received">
-            Before you leave,<br>
-            would you like us to recommend a professional psychologist?
+            Wait, sebelum pergi,<br>
+            Kita ada profile professional psychologist yang bisa kamu knjungi disini, mau liat?
             <div class="quick-reply">
                 <button class="choice-btn" onclick="choosePsychologist(true)">Iya, aku mau</button>
                 <button class="choice-btn" onclick="choosePsychologist(false)">No, thanks</button>
